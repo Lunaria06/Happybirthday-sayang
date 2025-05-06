@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Selamat Ulang Tahun Sayang!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #d0eaff, #f0faff);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      padding: 30px;
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+    }
+    h1 {
+      color: #0077b6;
+      margin-bottom: 10px;
+    }
+    .slider {
+      margin: 20px 0;
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+    }
+    .slider img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      border-radius: 12px;
+      scroll-snap-align: center;
+      flex-shrink: 0;
+    }
+    .btn {
+      background: #00b4d8;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #0096c7;
+    }
+    #messageBox {
+      display: none;
+      margin-top: 20px;
+      background: #e0f4ff;
+      padding: 20px;
+      border-radius: 12px;
+      color: #005f73;
+      animation: fadeIn 0.8s ease-out;
+    }
+    #secretLetter {
+      display: none;
+      background: #fff9db;
+      padding: 20px;
+      margin-top: 15px;
+      border-radius: 12px;
+      color: #7f4f24;
+      animation: fadeIn 1s ease-in;
+    }
+    .reveal-name {
+      font-weight: bold;
+      color: #0077b6;
+      cursor: pointer;
+      display: inline-block;
+      border-bottom: 1px dashed #0077b6;
+    }
+    .funny-gif {
+      margin-top: 20px;
+      max-width: 100%;
+      border-radius: 12px;
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🎉 Selamat Ulang Tahun, Sayangku! 🎂</h1>
+  <p>Klik tombol ini, aku punya sesuatu buat kamu...</p>
+  <button class="btn" onclick="showMessage()">Lihat Pesan 🎁</button>
+
+  <div id="messageBox">
+    <p id="typedText"></p>
+    
+    <!-- GIF Lucu -->
+    <img src="lovecat.gif" id="funnyGif" alt="GIF Lucu"/>
+
+    <div class="slider">
+      <img src="Pict1.jpg" alt="Kenangan 1">
+      <img src="Pict2.jpg" alt="Kenangan 2">
+      <img src="Pict3.jpg" alt="Kenangan 3">
+    </div>
+    <button class="btn" onclick="replyWhatsapp()">Balas via WhatsApp 💬</button>
+    <p style="margin-top:15px;">Klik namaku👉👉 <span class="reveal-name" onclick="showSecret()">Sania Cantik MasyaAllah</span></p>
+  </div>
+
+  <div id="secretLetter">
+    <h3>💌 Surat Rahasia</h3>
+    <p>Sayang, aku gak pernah nyangka bisa sejauh ini bareng kamu. Aku doain semua yang kamu cita-citakan tercapai, dan semoga aku juga tetap jadi bagian dari rencana hidup kamu (udah investasi hati soalnya 😜). Makasih udah jadi tempat ternyaman buat pulang. Aku akan selalu ada untuk kamu. I love you. 💙</p>
+  </div>
+
+  <audio id="lagu" src="Satu Hari Untukmu.mp3" loop></audio>
+<button onclick="document.getElementById('lagu').play()">Putar musiknya dulu 🎵</button>
+
+</div>
+
+<script>
+  const message = "Selamat ulang tahun, ayy! 🥳 Hari ini spesial banget, karena orang yang aku sayang lahir ke dunia. Semoga kamu selalu sehat, bahagia, dan terus jadi kamu yang aku kenal: baik, sabar, dan perhatian 💙";
+  let i = 0;
+
+  function showMessage() {
+    document.getElementById("messageBox").style.display = "block";
+    typeWriter();
+  }
+
+  function typeWriter() {
+    if (i < message.length) {
+      document.getElementById("typedText").innerHTML += message.charAt(i);
+      i++;
+      setTimeout(typeWriter, 40);
+    } else {
+      document.getElementById("funnyGif").style.display = "block";
+    }
+  }
+
+  function replyWhatsapp() {
+    const message = encodeURIComponent("Awww, makasih ya! 💙 Aku sayang kamu juga 🥰");
+    window.open("https://wa.me/6281221721348?text=" + message, "_blank");
+  }
+
+  function showSecret() {
+    document.getElementById("secretLetter").style.display = "block";
+  }
+</script>
+
+</body>
+</html>
